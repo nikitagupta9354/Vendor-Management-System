@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Shop Details</title>
+    <link rel="stylesheet" href="styles.css">
+
+
+    <style>
+        /* Define the style for the dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Style the button that will trigger the dropdown */
+        .dropdown-button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Style the dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        /* Style the individual dropdown items */
+        .dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            color: #333;
+        }
+
+        /* Change color of dropdown items on hover */
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        /* Show the dropdown content when the button is hovered over */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        /* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply a background color and padding to the body */
+body {
+    background-color: #f5f5f5;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the header */
+header {
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Style the main content area */
+main {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Style form elements */
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Style the "Add Product" button */
+button[type="submit"] {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* Style alert messages */
+.alert {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.alert-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Style the dropdown button */
+.dropdown-button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Style the dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style the dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Style the individual dropdown items */
+.dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    color: #333;
+}
+
+/* Change color of dropdown items on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown content when the button is hovered over */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Add Shop Details</h1>
+    </header>
+    <main>
+        <form action="#" method="POST" enctype="multipart/form-data">
+             {% csrf_token %}
+            <label for="shopid">Shop ID (Integer):</label>
+            <input type="number" id="shopid" name="shopid" required>
+
+
+
+           <div class="row">
+                            <div class="col-sm-6">
+                                <div class="inputBoxFixed">
+                                    <div class="inputTextFixed" style="white-space: nowrap"> Type of Business </div>
+                                    <select class="inputFixed" name="cat">
+                                        {% for i in Cat %}
+                                            <option value="{{ i }}">{{ i }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+           <div> <label for="shopname">Name of Shop:</label>
+               <input type="text" id="shopname" name="shopname" required></div>
+
+            <div><label for="description">Description:</label>
+                <textarea id="description" name="description" rows="6" required></textarea></div>
+
+            <div><label for="shopImage1">Image of Shop 1:</label>
+            <input type="file" id="shopImage1" name="uimage1" accept="image/*" required></div>
+
+            <div><label for="shopImage2">Image of Shop 2:</label>
+            <input type="file" id="shopImage2" name="uimage2" accept="image/*" required></div>
+
+            <div><label for="longitude">Longitude:</label>
+            <input type="text" id="longitude" name="longitude" required></div>
+
+            <div><label for="latitude">Latitude:</label>
+            <input type="text" id="latitude" name="latitude" required></div>
+
+<div><label for="address">Address:</label>
+            <input type="text" id="address" name="address" required></div>
+            <div>
+        <button type="submit" class="btn btn-info">Add Shop</button>
+    </div>
+        </form>
+         {% if messages %}
+        {% for i in messages %}
+            <div class="alert alert-primary text-center">{{i}}</div>
+        {% endfor %}
+    {% endif %}
+    </main>
+
+</body>
+</html>

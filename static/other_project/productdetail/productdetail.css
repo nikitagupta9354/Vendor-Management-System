@@ -1,0 +1,78 @@
+figure{float:left; margin-left:300px}
+figure img{max-width:350px;}
+
+@media screen and (max-width: 576px){
+	#prodImg{
+		display: inline-block ;
+	}
+
+
+}
+
+
+@media screen and (max-width: 1090px){
+	#prodImg{
+		width:220px ;
+		height:220px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>View Shops</title>
+    {% endblock %}
+</head>
+<style>
+ul.sidenav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    height: 76%;
+    background-color: #f1f1f1;
+    position: absolute;
+    float: left;
+    margin-left: -1%;
+    overflow: -moz-scrollbars-vertical;
+    -webkit-border-radius: 1%;
+    -moz-border-radius: 1%;
+    border-radius: 1%;
+    overflow: auto;
+
+}
+
+ul.sidenav li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+
+ul.sidenav li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    ul.sidenav {
+        display: none;
+    }
+}
+
+</style>
+
+<body>
+<h2>Have a look at shops around you!</h2>
+{% block body %}
+    <div class="container-fluid">
+        <ul class="sidenav">
+            <li><h3><strong></strong></h3></li>
+            <li><h5 style="padding-left: 6px">CATEGORIES</h5></li>
+            {% for i in cat %}
+                <li><p>{{ i.cname }}</p></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div style="margin-left:18%;">
+    <h2>{{ No }}</h2>
+        <!-- The flexible grid (content) -->
+        <div class="container-fluid">
+            <div class="row">
+                {% for i in Data %}
+                    <div class="col-lg-3 col-md-4 col-sm-6  d-flex ">
+                        <div class="card-deck" style="padding-bottom: 2%">
+                            <div class="card ">
+
+                                <img src= "{{ i.img1.url }}" class="card-img-top img-fluid" style="height: 200px;width: 200px;" >
+                                <div class="card-body">
+                                    <h1 class="card-title ctm-color" style="height: 100%;color: black">{{ i.name }}</h1>
+                                </div>
+                                <div class="card-footer">
+                                    <h3><b>{{ i.description }}</b></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}
+
+</body>
+</html>

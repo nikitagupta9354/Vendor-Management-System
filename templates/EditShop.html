@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Shop Details</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Overall page styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Form styling */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="number"],
+        input[type="text"],
+        textarea,
+        select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        select {
+            width: 100%;
+        }
+
+        button[type="submit"] {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Edit Shop Details</h1>
+    </header>
+    <main>
+        <form action="#" method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+
+
+            <!-- Type of Business -->
+            <label for="cat">Type of Business:</label>
+            <select id="cat" name="cat">
+                {% for i in cat %}
+                <option value="{{i}}" selected> {{i}}</option>
+                {% endfor %}
+                <!-- Add other options as needed -->
+            </select>
+
+
+
+               <div class="col-sm-6">
+        <div class="inputBoxFixed">
+            <div class="inputTextFixed">Name of Shop </div>
+            <input type="text" name="name" class="inputFixed" value="{{s.name}}" autofocus
+                   required>
+        </div>
+    </div>
+</div>
+
+
+    <div class="col-sm-6">
+        <div class="inputBoxFixed">
+            <div class="inputTextFixed">Description </div>
+            <input type="text" name="description" class="inputFixed" value="{{s.description}}" autofocus
+                   required>
+        </div>
+    </div>
+</div>
+
+    <div class="col-sm-6">
+        <div class="inputBoxFixed">
+            <div class="inputTextFixed">Image of Shop 1 </div>
+            <input type="file"   class="inputFixed" value="abc" id="shopImage1" name="uimage1" accept="image/*" autofocus
+                   >
+        </div>
+    </div>
+
+</div
+
+    <div class="col-sm-6">
+        <div class="inputBoxFixed">
+            <div class="inputTextFixed">Image of Shop 2 </div>
+            <input type="file"  class="inputFixed" value="abc" id="shopImage2" name="uimage2" accept="image/*" autofocus
+                   >
+        </div>
+    </div>
+
+</div>
+
+
+<div class="col-sm-6">
+        <div class="inputBoxFixed">
+            <div class="inputTextFixed"> Longitude </div>
+            <input type="number" id="longitude" name="longitude"class="inputFixed" value="{{s.longitude}}" autofocus
+                   required>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-sm-6">
+        <div class="inputBoxFixed">
+            <div class="inputTextFixed"> Latitude </div>
+            <input type="number" id="latitude" name="latitude"class="inputFixed" value="{{s.latitude}}" autofocus
+                   required>
+        </div>
+    </div>
+</div>
+
+
+ <div class="col-sm-6">
+        <div class="inputBoxFixed">
+            <div class="inputTextFixed">Address </div>
+            <input type="text" name="address" id= "address" class="inputFixed" value="{{s.address}}" autofocus
+                   required>
+        </div>
+    </div>
+</div>
+
+            <!-- Submit Button -->
+            <button type="submit">Update Shop</button>
+        </form>
+    </main>
+</body>
+</html>

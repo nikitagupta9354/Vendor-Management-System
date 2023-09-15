@@ -1,0 +1,83 @@
+.containers
+{ padding:200px;
+    margin:0px;
+    height:1000px;
+    margin-bottom:20px;
+}
+
+
+
+.column1{
+
+	float:left;
+	width:33.33%;
+	padding-bottom: 5px;
+
+
+.row1::after{
+	content:"";
+	clear:both;
+	display:table;
+	
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

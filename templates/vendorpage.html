@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shop Details</title>
+    <style>
+        /* Overall page styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px 0;
+            background-color: cadetblue;
+            color: black;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Button styling */
+        .edit-btn, .delete-btn {
+            text-decoration: none;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .delete-btn {
+            background-color: #ff0000;
+        }
+
+        .edit-btn:hover, .delete-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .add-shop-btn {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        /* Image styling */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Row hover effect */
+        tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* Category dropdown styling */
+        select {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shop Details</h1>
+    <table>
+        <a href="/addshop" class="add-shop-btn">Add Shop </a>
+        <thead>
+            <tr>
+                <th style="background-color: #333; color: #fff;">Shop ID</th>
+                <th style="background-color: #333; color: #fff;">Image</th>
+                <th style="background-color: #333; color: #fff;">Name of Shop</th>
+                <th style="background-color: #333; color: #fff;">Category</th>
+                <th style="background-color: #333; color: #fff;">Address</th>
+                <th style="background-color: #333; color: #fff;">Description</th>
+                <th style="background-color: #333; color: #fff;">Edit</th>
+                <th style="background-color: #333; color: #fff;">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+           <div> <tr>
+                {% for i in s %}
+                <div class=" product">
+
+                <td>{{i.id}}</td>
+                <td><img src="{{i.img2}}" /></td>
+
+                <td>{{i.name}}</td>
+                <td>{{i.cat}}</td>
+                <td>{{i.address}}</td>
+                <td>{{i.description}}</td>
+                <td><a href="/editshop/{{i.id}}" class="edit-btn">Edit</a></td>
+                <td><a href="/deleteshop/{{i.id}}" class="delete-btn">Delete</a></td>
+
+                {% endfor %}
+                    </div>
+           </tr></div>
+
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+</body>
+</html>

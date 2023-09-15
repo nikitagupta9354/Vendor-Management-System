@@ -1,0 +1,190 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    {% block title %}
+  <title>Signup</title>
+    {% endblock %}
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container styles */
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Form container styles */
+.col-sm-6 {
+    background-color: #ffffff; /* Form background color */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+}
+
+/* Form header styles */
+.display-4 {
+    color: #333; /* Header text color */
+    margin-bottom: 20px;
+}
+
+/* Form input styles */
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-control {
+    border: none;
+    border-bottom: 2px solid #007bff; /* Input border color */
+    border-radius: 0;
+    padding: 10px;
+    background-color: transparent;
+    transition: border-color 0.3s;
+    width: 100%;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #0056b3; /* Input border color on focus */
+}
+
+/* Hint text styles */
+.hint {
+    font-size: 14px;
+    color: #888; /* Hint text color */
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 100%;
+}
+
+/* Button styles */
+.btn-custom {
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: #0056b3; /* Button background color on hover */
+}
+
+/* Create an account link styles */
+.font-italic {
+    text-align: center;
+    color: #888; /* Link text color */
+    text-decoration: none;
+    display: block;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+.font-italic:hover {
+    color: #007bff; /* Link text color on hover */
+}
+
+/* Error message styles */
+.alert-danger {
+    background-color: #f8d7da; /* Error message background color */
+    color: #721c24; /* Error message text color */
+    border-color: #f5c6cb; /* Error message border color */
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+</style>
+
+
+</head>
+{% block body %}
+
+     <div class="container-fluid">
+        <div class="row no-gutter">
+            <!-- The content half -->
+            <div class="col-sm-6 mx-auto bg-light">
+                <div class=" align-items-center py-5">
+
+                    <!-- Demo content-->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-10 mx-auto">
+                                <h3 class="display-4 text-center">Sign Up</h3>
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group mb-3">
+                                        <input type="text" placeholder="Username" name="uname" required=""
+                                               autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                        <span class="hint">e.g. JohnWick</span>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input type="text" placeholder="First Name" name="first_name" required=""
+                                               autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                        <span class="hint">e.g. John</span>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input type="text" placeholder="Last Name" name="last_name" required=""
+                                               autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                        <span class="hint">e.g. Wick</span>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input type="email" placeholder="Email Address" name="email" required=""
+                                               autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                        <span class="hint">e.g. johnwick@mail.com</span>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input type="password" placeholder="Password" name="pward" required=""
+                                               class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                        <span class="hint"></span>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input type="password" placeholder="Confirm Password" name="cpward" required=""
+                                               class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                    </div>
+                                    <!--<div class="custom-control custom-checkbox mb-3">
+                                        <input id="customCheck1" type="checkbox" checked class="custom-control-input">
+                                        <label for="customCheck1" class="custom-control-label">Remember password</label>
+                                    </div>-->
+                                    <button type="submit"
+                                            class="btn btn-custom btn-block text-uppercase mb-2 rounded-pill shadow-sm"
+                                            style="width: 100%">Sign up
+                                    </button>
+                                    <div class="text-center d-flex justify-content-between mt-4">
+                                        <p>Already have an account!</p>
+                                        <a href="/" class="font-italic text-muted"> CLICK HERE</a>
+                                    </div>
+                                </form>
+                                {% if messages %}
+                                    <div class="alert alert-danger">
+                                        {% for i in messages %}
+                                            {{ i }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div><!-- End -->
+
+                </div>
+            </div><!-- End -->
+
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>
