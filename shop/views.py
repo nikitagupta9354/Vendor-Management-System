@@ -53,7 +53,8 @@ def signUp(request):
             mail = request.POST.get('email')
             pward = request.POST.get('pward')
             cpward = request.POST.get('cpward')
-            if (pward == cpward):
+            type = request.POST.get('type')
+            if ((pward == cpward) and (type != 'vendor')):
                 User.objects.create_user(username=str(unam),
                                          first_name=str(fnam),
                                          last_name=str(lnam),
@@ -61,13 +62,26 @@ def signUp(request):
                                          password=pward
                                          )
                 success(request, "Account is created")
+
+
                 try:
                     email_send(request, mail, unam)
                 except:
                     error(request, " ")
+
+
+
                 return HttpResponseRedirect('/')
-            else:
+            elif( pward != cpward ):
                 error(request, "Password and Confirm Password not Matched")
+            else:
+                User.objects.create_superuser(username=str(unam),
+                                              first_name=str(fnam),
+                                              last_name=str(lnam),
+                                              email=mail,
+                                              password=pward
+                                              )
+                return HttpResponseRedirect('/')
     return render(request, "Signup.html")
 
 def deleteShop(request,shop_id):
